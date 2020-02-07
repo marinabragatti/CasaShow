@@ -1,60 +1,73 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="LayoutPadrao">
 
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cobrança</title>
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
-	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css"
-	href="/css/bootstrap-datepicker.standalone.min.css">
-
+<title>Eventos</title>
 
 </head>
 
-<body>
-
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Casa de Show</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="#">Home
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Features</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-
-			</ul>
-		</div>
-	</nav>
-
-	<form class="form-horizontal">
-		<div class="card">
-		<div class="card-header">
-				<div class="clearfix">
-					<h2 class="new-header">Novo evento</h2>
-					
+<section layout:fragment="conteudo">
+	<form class="form-horizontal" method="POST" action="/evento">
+		<div class="card w-75">
+			<div class="card-header text-center text-white">
+				<h2 class="new-header">Novo Evento</h2>
+			</div>
+			<div class="card-body card-bordered text-right">
+				<div class="form-group row">
+					<label for="nomeEvento" class="col-4 control-label col-form-label">Evento</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="nomeEvento"
+							name="nomeEvento">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="capacidade" class="col-4 control-label col-form-label">Capacidade</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="capacidade"
+							name="capacidade">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="dataEvento" class="col-4 control-label col-form-label">Data</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="dataEvento"
+							name="dataEvento">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="valorIngresso"
+						class="col-4 control-label col-form-label">Valor do
+						Ingresso</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="valorIngresso"
+							name="valorIngresso">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="genero" class="col-4 control-label col-form-label">Gênero
+						Musical</label>
+					<div class="col-sm-3">
+						<select class="form-control" name="genero">
+							<option value="ROCK">Rock
+							</option>
+						</select>
+						<!-- <select class="form-control" name="genero">
+							<option th:each="genero : ${todosGeneros}" th:value="${genero}" th:text="${genero.genero}"> </option> 
+						</select> -->
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-6">
+						<button type="submit" class="btn btn-primary btn-enviar">Enviar</button>
+					</div>
 				</div>
 			</div>
-			<div class="card-body card-bordered">This is some text within a card body.</div>
 		</div>
-
 	</form>
-
-</body>
+</section>
 
 </html>

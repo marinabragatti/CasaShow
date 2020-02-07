@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-horizontal{
+	padding-left: 20%;
+	padding-right: 20%;
+	padding-top: 2%;
+}
+
+.card-header{
+	background-color: #007acc;
+}
+
+.navbar{
+	background-color: #6600cc;
+	padding: 50px;
+}
+
+nav a{
+	font-size: 1.8em !important;
+	padding-right: 15px;
+}
+
+nav li{
+	display: inline-block;
+	margin: 0 0 0 20px;
+}
+
+nav li a{
+	font-size: 1.4em !important;
+
+}
+
+li a:active{
+	color: red !important;
+}
+
+a:hover{
+	color: white !important;
+}
+
+.table-casa{
+	margin-top: 50px;
+	padding: 0 8% 0 8%;
+}
+
+.alert{
+	
+}
