@@ -9,13 +9,13 @@ public enum GeneroMusical {
 	ROCK("Rock"),
 	FUNK("Funk");
 	
-	private String genero;
+	private String generos;
 	
-	GeneroMusical(String genero){
-		this.genero = genero;
+	GeneroMusical(String generos){
+		this.generos = generos;
 	}
 	
-	public String getGenero() {
-		return genero;
+	public String getGeneros() {
+		return generos;
 	}
 }

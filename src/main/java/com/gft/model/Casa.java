@@ -13,10 +13,10 @@ public class Casa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	@NotEmpty(message = "Preencha o nome da Casa de Show")
+	@NotEmpty(message = "Nome da Casa de Show inválido")
 	private String nomeCasa;
 	
-	@NotEmpty(message = "Preencha o endereço da Casa de Show")
+	@NotEmpty(message = "Endereço da Casa de Show inválido")
 	private String endereco;
 	
 	public Long getCodigo() {
@@ -37,11 +37,14 @@ public class Casa {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
+		result = prime * result + ((nomeCasa == null) ? 0 : nomeCasa.hashCode());
 		return result;
 	}
 	@Override
@@ -58,8 +61,19 @@ public class Casa {
 				return false;
 		} else if (!codigo.equals(other.codigo))
 			return false;
+		if (endereco == null) {
+			if (other.endereco != null)
+				return false;
+		} else if (!endereco.equals(other.endereco))
+			return false;
+		if (nomeCasa == null) {
+			if (other.nomeCasa != null)
+				return false;
+		} else if (!nomeCasa.equals(other.nomeCasa))
+			return false;
 		return true;
 	}
+	
 	
 	
 
