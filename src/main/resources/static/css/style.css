@@ -1,57 +1,87 @@
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+* {
+	margin: 0;
+	padding: 0;
 }
 
-.form-horizontal{
+body {
+	font-size: 1em;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.form-horizontal {
 	padding-left: 20%;
 	padding-right: 20%;
 	padding-top: 2%;
 }
 
-.card-header{
+.card-header {
 	background-color: #007acc;
 }
 
-.navbar{
+.navbar {
 	background-color: #6600cc;
 	padding: 50px;
 }
 
-nav a{
+nav a {
 	font-size: 1.8em !important;
 	padding-right: 15px;
 }
 
-nav li{
+nav li {
 	display: inline-block;
 	margin: 0 0 0 20px;
 }
 
-nav li a{
+nav li a {
 	font-size: 1.4em !important;
-
 }
 
-li a:active{
-	color: red !important;
-}
-
-a:hover{
+a:hover {
 	color: white !important;
 }
 
-.table-casa{
+.table-casa {
 	margin-top: 50px;
 	padding: 0 8% 0 8%;
 }
 
 .card {
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
+	/* Add shadows to create the "card" effect */
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
 }
 
-.alert{
-	
+.table {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+}
+
+.div-semcasa {
+	background-image: linear-gradient(141deg, #007acc 0%, #1fc8db 51%, #2cb5e8 75%);
+	border-radius: 50px;
+	padding: 3%;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-bottom: 3%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	font-size: 1.6em !important;
+	color: white;
+}
+
+.img-show {
+	border-radius: 40%;
+	max-width: 35%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 40%;
+	opacity: 0.8;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

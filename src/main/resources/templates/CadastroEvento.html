@@ -12,7 +12,7 @@
 
 <section layout:fragment="conteudo">
 	<form class="form-horizontal" method="POST" action="/evento"
-		th:object="${evento}">
+		th:object="${evento}" th:if="${not #lists.isEmpty(casaShow)}">
 		<div class="alert alert-danger" role="alert"
 			th:if="${#fields.hasAnyErrors()}">
 			<div th:each="detailedError : ${#fields.detailedErrors()}">
@@ -66,12 +66,14 @@
 							id="valorIngresso" th:field="*{valorIngresso}">
 					</div>
 				</div>
-				<div class="form-group row" >
-					<label for="casaShow" class="col-4 control-label col-form-label">Casa de Show</label>
+				<div class="form-group row">
+					<label for="casaShow" class="col-4 control-label col-form-label">Casa
+						de Show</label>
 					<div class="col-sm-3">
 						<select class="form-control" name="casaShow">
-							<option th:each="casaShow : ${casaShow}" th:value="${codigo}"
-								th:text="${casaShow.nomeCasa}" th:field="*{casaShow}"></option>
+							<option th:each="casaShow : ${casaShow}"
+								th:value="${casaShow.codigo}" th:text="${casaShow.nomeCasa}"
+								th:field="*{casaShow.nomeCasa}"></option>
 						</select>
 					</div>
 				</div>
@@ -96,7 +98,7 @@
 
 	<div class="table-responsive table-casa">
 		<table class="table table-bordered table-striped">
-			<thead>
+			<thead th:if="${not #lists.isEmpty(casaShow)}">
 				<tr>
 					<th class="text-center">#</th>
 					<th class="text-center">Nome do Evento</th>
@@ -112,11 +114,11 @@
 				<tr th:each="evento : ${eventos}">
 					<td class="text-center" th:text="${evento.codigo}"></td>
 					<td class="text-center" th:text="${evento.nomeEvento}"></td>
-					<td class="text-center" th:text="${evento.capacidade}"></td>
+					<td class="text-center" th:text="${{evento.capacidade}}"></td>
 					<td class="text-center" th:text="${{evento.dataEvento}}"></td>
 					<td class="text-center" th:text="|R$ ${{evento.valorIngresso}}|"></td>
-					<td class="text-center" th:text="${evento.genero}"></td>
-					<td class="text-center"></td>
+					<td class="text-center" th:text="${evento.genero.generos}"></td>
+					<td class="text-center" th:text="${evento.casaShow.nomeCasa}"></td>
 					<td class="text-center"><a class="btn btn-link btn-xs"
 						th:href="@{/evento/{codigo}(codigo=${evento.codigo})}"
 						title="Editar"> <i class="far fa-edit"></i>
@@ -129,13 +131,24 @@
 				</tr>
 
 				<tr>
-					<td class="text-center" colspan="6"
-						th:if="${#lists.isEmpty(eventos)}">Nenhum Evento cadastrado</td>
+					<td class="text-center" colspan="8"
+						th:if="${#lists.isEmpty(eventos) and not #lists.isEmpty(casaShow)}">Nenhum
+						Evento cadastrado</td>
 				</tr>
 			</tbody>
+			
 		</table>
 		<div layout:insert="ConfirmacaoExclEvento"></div>
+		<div class="text-center div-semcasa" 
+					th:if="${#lists.isEmpty(eventos) and #lists.isEmpty(casaShow)}">Cadastre
+					uma Casa de Show para poder cadastrar um Evento.
+					
+		</div>
+		<div class="div-img" th:if="${#lists.isEmpty(eventos) and #lists.isEmpty(casaShow)}">
+			<img class="img-show" alt="Casa de Show" src="../images/show-pic.jpeg">
+		</div>
 	</div>
+
 
 </section>
 

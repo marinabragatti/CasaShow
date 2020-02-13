@@ -3,6 +3,7 @@ package com.gft.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -45,7 +46,7 @@ public class Evento {
 	@DecimalMin(value = "0.01", message = "O valor não pode ser menor que R$0,01")
 	private BigDecimal valorIngresso;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Casa casaShow;
 	
 	@Enumerated(EnumType.STRING)
