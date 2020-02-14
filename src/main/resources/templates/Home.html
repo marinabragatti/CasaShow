@@ -11,14 +11,34 @@
 </head>
 
 <section layout:fragment="conteudo">
-	<div class="flex-container" th:object="${evento}">
-		<div class="">
-			<h3>algo aqui</h3>
-			<h3>algo aqui</h3>
-			<h3>algo aqui</h3>
-			<h3>algo aqui</h3>
+
+
+	<!-- Flickity HTML init -->
+	<div class="gallery js-flickity"
+		data-flickity-options='{ "wrapAround": true }'>
+		<div class="gallery-cell" th:each="evento : ${eventos}">
+			<div class="div-gallery">
+				
+					<label class="show" th:text="${evento.nomeEvento}"></label> <br>
+					<label>Ingresso: </label> <label
+						th:text="|R$ ${{evento.valorIngresso}}|"></label> <br> <label>Data:
+					</label> <label th:text="${{evento.dataEvento}}"></label> <br> <label>Local:
+					</label> <label th:text="${evento.casaShow.nomeCasa}"></label> <br> <label>Ingressos
+						Restantes: </label> <label th:text="${{evento.capacidade}}"></label>
+						<br>
+					<button class="btn btn-primary btn-enviar btn-comprar">Comprar</button>
+			</div>
+			<div
+				th:if="${#lists.isEmpty(eventos) and not #lists.isEmpty(casaShow)}">
+				Nenhum Evento disponível :(</div>
 		</div>
-		
+
+	</div>
+
+
+
+
+	<!-- 
 		<div class="table-responsive table-casa">
 		<table class="table table-bordered table-striped">
 			<thead th:if="${not #lists.isEmpty(casaShow)}">
@@ -61,8 +81,9 @@
 			</tbody>
 			
 		</table>
-	</div>
-	</div>
+	</div> -->
+
+
 </section>
 
 </html>
