@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login</title>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/flickity.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css"
+	href="../css/bootstrap-datepicker.standalone.min.css">
+
+
+</head>
+
+<body>
+	<h1>LOGIN</h1>
+	<!-- ${SPRING_SECURITY_LAST_EXCEPTION.message} -->
+	<form class="form-horizontal" method="POST" action="/login"
+	>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Email address</label> <input
+				type="text" name="username" id="exampleInputEmail1"
+				aria-describedby="emailHelp"> <small id="emailHelp"
+				class="form-text text-muted">We'll never share your email
+				with anyone else.</small>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputPassword1">Password</label> <input
+				type="password" name="password" id="exampleInputPassword1">
+		</div>
+		<div class="form-group form-check">
+			<input type="checkbox" class="form-check-input" id="exampleCheck1">
+			<label class="form-check-label" for="exampleCheck1">Check me
+				out</label>
+		</div>
+		<button type="submit" class="btn btn-primary">Entrar</button>
+		<a href="/cadastrousuario" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cadastre-se
+		</a>
+	</form>
+
+</body>
+
+</html>

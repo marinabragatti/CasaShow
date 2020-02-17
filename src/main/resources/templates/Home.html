@@ -18,21 +18,31 @@
 		data-flickity-options='{ "wrapAround": true }'>
 		<div class="gallery-cell" th:each="evento : ${eventos}">
 			<div class="div-gallery">
-				
-					<label class="show" th:text="${evento.nomeEvento}"></label> <br>
-					<label>Ingresso: </label> <label
-						th:text="|R$ ${{evento.valorIngresso}}|"></label> <br> <label>Data:
-					</label> <label th:text="${{evento.dataEvento}}"></label> <br> <label>Local:
-					</label> <label th:text="${evento.casaShow.nomeCasa}"></label> <br> <label>Ingressos
-						Restantes: </label> <label th:text="${{evento.capacidade}}"></label>
-						<br>
-					<button class="btn btn-primary btn-enviar btn-comprar">Comprar</button>
+
+				<label class="show" th:text="${evento.nomeEvento}"></label> <br>
+				<label>Ingresso: </label> <label
+					th:text="|R$ ${{evento.valorIngresso}}|"></label> <br> <label>Data:
+				</label> <label th:text="${{evento.dataEvento}}"></label> <br> <label>Local:
+				</label> <label th:text="${evento.casaShow.nomeCasa}"></label> <br> <label>Ingressos
+					Restantes: </label> <label th:text="${{evento.capacidade}}"></label> <br>
+				<!--<a th:if="${sec:authorize=!isFullyAuthenticated()" href="/comprar"
+					class="btn btn-primary btn-lg btn-comprar" role="button"
+					aria-pressed="true">Comprar </a> <a
+					th:unless="${sec:authorize=!isFullyAuthenticated()" href="/login"
+					class="btn btn-primary btn-lg btn-comprar" role="button"
+					aria-pressed="true">Comprar </a> -->
+				 <button class="btn btn-primary btn-enviar btn-comprar">Comprar</button>
 			</div>
-			<div
-				th:if="${#lists.isEmpty(eventos) and not #lists.isEmpty(casaShow)}">
-				Nenhum Evento disponível :(</div>
+
 		</div>
 
+	</div>
+	<div class="gallery js-flickity" th:if="${#lists.isEmpty(eventos)}"
+		data-flickity-options='{ "wrapAround": true }'>
+		<div class="gallery-cell">
+			<div class="div-gallery no-event">Nenhum Evento disponível :(</div>
+
+		</div>
 	</div>
 
 

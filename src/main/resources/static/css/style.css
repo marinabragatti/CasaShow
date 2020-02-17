@@ -115,8 +115,13 @@ a:hover {
 .btn-comprar{
 	background-color: #b34700;
 }
+
 .btn-comprar:hover{
 	background-color: #e65c00
+}
+
+.no-event{
+	
 }
 
 /* Carrossel */
