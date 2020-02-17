@@ -14,7 +14,7 @@ import com.gft.repository.CasasShowsInter;
 import com.gft.repository.EventosInter;
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 public class HomeController {
 
 	@Autowired
