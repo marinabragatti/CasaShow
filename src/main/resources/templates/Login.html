@@ -10,43 +10,40 @@
 <title>Login</title>
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
-<link rel="stylesheet" type="text/css" href="../css/flickity.css">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css"
-	href="../css/bootstrap-datepicker.standalone.min.css">
 
 
 </head>
 
-<body>
-	<h1>LOGIN</h1>
-	<!-- ${SPRING_SECURITY_LAST_EXCEPTION.message} -->
-	<form class="form-horizontal" method="POST" action="/login"
-	>
-		<div class="form-group">
-			<label for="exampleInputEmail1">Email address</label> <input
-				type="text" name="username" id="exampleInputEmail1"
-				aria-describedby="emailHelp"> <small id="emailHelp"
-				class="form-text text-muted">We'll never share your email
-				with anyone else.</small>
+<body class="body-login">
+	<form class="login-form" method="POST" action="/login">
+		<div class="alert alert-danger" role="alert" th:if="${param.error}">
+			<span> Usuário ou Senha inválidos</span>
 		</div>
-		<div class="form-group">
-			<label for="exampleInputPassword1">Password</label> <input
-				type="password" name="password" id="exampleInputPassword1">
-		</div>
-		<div class="form-group form-check">
-			<input type="checkbox" class="form-check-input" id="exampleCheck1">
-			<label class="form-check-label" for="exampleCheck1">Check me
-				out</label>
-		</div>
-		<button type="submit" class="btn btn-primary">Entrar</button>
-		<a href="/cadastrousuario" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cadastre-se
-		</a>
-	</form>
+		<h1>Login</h1>
 
+		<div class="txtb">
+			<input type="text" name="username" id="username" required> <span
+				data-placeholder="Usuário"></span>
+
+		</div>
+
+		<div class="txtb">
+			<input type="password" name="password" id="password" required>
+			<span data-placeholder="Senha"></span>
+
+		</div>
+
+		<input type="submit" class="logbtn" value="Login">
+
+		<div class="bottom-text">
+			Não é cadastrado? <a href="/cadastrousuario">Cadastre-se</a>
+		</div>
+
+	</form>
 </body>
 
 </html>

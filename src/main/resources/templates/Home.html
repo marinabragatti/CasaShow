@@ -14,23 +14,20 @@
 
 
 	<!-- Flickity HTML init -->
+	<form class="form-horizontal" method="POST" action="/home">
 	<div class="gallery js-flickity"
 		data-flickity-options='{ "wrapAround": true }'>
 		<div class="gallery-cell" th:each="evento : ${eventos}">
 			<div class="div-gallery">
 
 				<label class="show" th:text="${evento.nomeEvento}"></label> <br>
+				<div class="dados-show">
 				<label>Ingresso: </label> <label
 					th:text="|R$ ${{evento.valorIngresso}}|"></label> <br> <label>Data:
 				</label> <label th:text="${{evento.dataEvento}}"></label> <br> <label>Local:
 				</label> <label th:text="${evento.casaShow.nomeCasa}"></label> <br> <label>Ingressos
 					Restantes: </label> <label th:text="${{evento.capacidade}}"></label> <br>
-				<!--<a th:if="${sec:authorize=!isFullyAuthenticated()" href="/comprar"
-					class="btn btn-primary btn-lg btn-comprar" role="button"
-					aria-pressed="true">Comprar </a> <a
-					th:unless="${sec:authorize=!isFullyAuthenticated()" href="/login"
-					class="btn btn-primary btn-lg btn-comprar" role="button"
-					aria-pressed="true">Comprar </a> -->
+				</div>
 				 <button class="btn btn-primary btn-enviar btn-comprar">Comprar</button>
 			</div>
 
@@ -40,59 +37,13 @@
 	<div class="gallery js-flickity" th:if="${#lists.isEmpty(eventos)}"
 		data-flickity-options='{ "wrapAround": true }'>
 		<div class="gallery-cell">
-			<div class="div-gallery no-event">Nenhum Evento disponível :(</div>
-
+			<div class="div-gallery no-event">
+				<label class="show"> Nenhum Evento disponível :( </label>
+			</div>
 		</div>
 	</div>
 
-
-
-
-	<!-- 
-		<div class="table-responsive table-casa">
-		<table class="table table-bordered table-striped">
-			<thead th:if="${not #lists.isEmpty(casaShow)}">
-				<tr>
-					<th class="text-center">#</th>
-					<th class="text-center">Nome do Evento</th>
-					<th class="text-center">Capacidade</th>
-					<th class="text-center">Data</th>
-					<th class="text-center">Valor do Ingresso</th>
-					<th class="text-center">Gênero Musical</th>
-					<th class="text-center">Casa de Show</th>
-					<th class=""></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="evento : ${eventos}">
-					<td class="text-center" th:text="${evento.codigo}"></td>
-					<td class="text-center" th:text="${evento.nomeEvento}"></td>
-					<td class="text-center" th:text="${{evento.capacidade}}"></td>
-					<td class="text-center" th:text="${{evento.dataEvento}}"></td>
-					<td class="text-center" th:text="|R$ ${{evento.valorIngresso}}|"></td>
-					<td class="text-center" th:text="${evento.genero.generos}"></td>
-					<td class="text-center" th:text="${evento.casaShow.nomeCasa}"></td>
-					<td class="text-center"><a class="btn btn-link btn-xs"
-						th:href="@{/evento/{codigo}(codigo=${evento.codigo})}"
-						title="Editar"> <i class="far fa-edit"></i>
-					</a> <a class="btn btn-link btn-xs"
-						th:attr="data-codigo=${evento.codigo}" data-toggle="modal"
-						data-target="#confirmacaoExclusaoModal" title="Excluir"> <i
-							class="fas fa-trash-alt"></i>
-
-					</a></td>
-				</tr>
-
-				<tr>
-					<td class="text-center" colspan="8"
-						th:if="${#lists.isEmpty(eventos) and not #lists.isEmpty(casaShow)}">Nenhum
-						Evento cadastrado</td>
-				</tr>
-			</tbody>
-			
-		</table>
-	</div> -->
-
+</form>
 
 </section>
 
