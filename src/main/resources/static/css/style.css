@@ -204,6 +204,13 @@ a:hover {
 	font-size: 50px;
 }
 
+.img-show{
+	margin: auto;
+	position: absolute;
+	top: 20; left: 0; bottom: 20; right: 0;
+	border-radius: 10px;
+}
+
 .dados-show{
 	display: block;
 	margin-left: auto;
@@ -245,7 +252,7 @@ a:hover {
 }
 
 .no-event{
-	
+	background-image: linear-gradient(141deg, #007acc 0%, #6600cc 51%, #007acc 95%);
 }
 
 /* Carrossel */
@@ -279,4 +286,14 @@ body {
 	line-height: 200px;
 	font-size: 80px;
 	color: white;
+}
+
+.footer-css{
+	width: 100%;
+        position: absolute;        
+        background: #333;
+        padding: 10px 0;
+        color: #fff;
+        bottom: 0;
+        
 }
