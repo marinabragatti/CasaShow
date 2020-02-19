@@ -1,4 +1,4 @@
-package com.gft.repository;
+package com.gft.model;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -6,8 +6,6 @@ import java.util.Collections;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import com.gft.model.Usuario;
 
 public class UsuarioUserDetails implements UserDetails {
 

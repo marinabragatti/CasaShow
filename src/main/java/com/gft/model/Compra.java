@@ -1,29 +1,32 @@
 package com.gft.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class Carrinho{
-
+public class Compra {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
 	@ManyToOne
-	private Evento evento;
+	private Usuario usuario;
 	
-	@ManyToOne
-	private Compra compra;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
+	private Date dataCompra;
 	
-	private int quantidade = 1;
-	
-	private int ingressoDisp;
-	
-	private double valorUnitario;
+	private FormaPagto formaPagto;
 	
 	private double valorTotal;
 
@@ -35,52 +38,36 @@ public class Carrinho{
 		this.codigo = codigo;
 	}
 
-	public Evento getEvento() {
-		return evento;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setEvento(Evento evento) {
-		this.evento = evento;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public Compra getCompra() {
-		return compra;
+	public Date getDataCompra() {
+		return dataCompra;
 	}
 
-	public void setCompra(Compra compra) {
-		this.compra = compra;
+	public void setDataCompra(Date dataCompra) {
+		this.dataCompra = dataCompra;
 	}
 
-	public int getQuantidade() {
-		return quantidade;
+	public FormaPagto getFormaPagto() {
+		return formaPagto;
 	}
 
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-	
-	public int getIngressoDisp() {
-		return ingressoDisp;
+	public void setFormaPagto(FormaPagto formaPagto) {
+		this.formaPagto = formaPagto;
 	}
 
-	public void setIngressoDisp(int ingressoDisp) {
-		this.ingressoDisp = ingressoDisp;
-	}
-	
 	public double getValorTotal() {
 		return valorTotal;
 	}
 
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
-	}
-	
-	public double getValorUnitario() {
-		return valorUnitario;
-	}
-
-	public void setValorUnitario(double valorUnitario) {
-		this.valorUnitario = valorUnitario;
 	}
 
 	@Override
@@ -99,7 +86,7 @@ public class Carrinho{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Carrinho other = (Carrinho) obj;
+		Compra other = (Compra) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -107,8 +94,6 @@ public class Carrinho{
 			return false;
 		return true;
 	}
-
-	
 	
 	
 }

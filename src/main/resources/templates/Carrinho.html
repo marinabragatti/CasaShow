@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="LayoutPadrao">
+
+<head>
+
+<title>Carrinho</title>
+
+</head>
+
+<section layout:fragment="conteudo">
+	<form class="form-horizontal" method="POST" action="/carrinho"
+		th:object="${carrinho}">
+		
+
+		<div class="table-responsive table-casa">
+			<table class="table table-bordered table-striped">
+				<thead th:if="${not #lists.isEmpty(listaEventos)}">
+					<tr>
+						<th class="text-center">Nome do Evento</th>
+						<th class="text-center">Ingressos Disponíveis</th>
+						<th class="text-center">Data</th>
+						<th class="text-center">Valor do Ingresso</th>
+						<th class="text-center">Gênero Musical</th>
+						<th class="text-center">Casa de Show</th>
+						<th class="text-center">Quantidade</th>
+						<th class=""></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="carrinho : ${listaCarrinho}">
+						<td class="text-center" th:text="${carrinho.evento.nomeEvento}"></td>
+						<td class="text-center" th:text="${{carrinho.ingressoDisp}}"></td>
+						<td class="text-center" th:text="${{carrinho.evento.dataEvento}}"></td>
+						<td class="text-center" th:text="|R$ ${{carrinho.evento.valorIngresso}}|"></td>
+						<td class="text-center" th:text="${carrinho.evento.genero.generos}"></td>
+						<td class="text-center" th:text="${carrinho.evento.casaShow.nomeCasa}"></td>
+						<td class="text-center" th:text="${carrinho.quantidade}"></td>
+						
+					</tr>
+					
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<!-- <td class="text-right" th:text="${{carrinho.valorTotal}}">SubTotal $$$$</td> -->
+					</tr>
+					
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>Taxa de Conveniencia $$$$</td>
+					</tr>
+					
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>Total $$$$</td>
+					</tr>
+
+					
+				</tbody>
+
+			</table>
+			<div layout:insert="ConfirmacaoExclEvento"></div>
+			<div class="text-center div-semcasa"
+				th:if="${#lists.isEmpty(listaCarrinho)}">Carrinho vazio :(</div>
+		</div>
+		
+		<div class="col-mb-2">
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<button class="btn btn-block btn-light">Continuar Comprando</button>
+				</div>
+				<div class="col-sm-12 col-md-6 text-right">
+					<button class="btn btn-lg btn-block btn-success text-uppercase">comprar</button>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</section>
+
+</html>

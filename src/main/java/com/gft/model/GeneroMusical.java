@@ -7,6 +7,9 @@ public enum GeneroMusical {
 	AXE("Axé"),
 	SERTANEJO("Sertanejo"),
 	ROCK("Rock"),
+	SAMBA("Samba"),
+	PAGODE("Pagode"),
+	ELETRONICO("Eletrônico"),
 	FUNK("Funk");
 	
 	private String generos;
