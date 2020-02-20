@@ -255,6 +255,17 @@ a:hover {
 	background-image: linear-gradient(141deg, #007acc 0%, #6600cc 51%, #007acc 95%);
 }
 
+.table-carrinho{
+	table-layout: auto;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.table-carrinho .absorbing-column {
+    width: 100%;
+}
+
 /* Carrossel */
 * {
 	-webkit-box-sizing: border-box;

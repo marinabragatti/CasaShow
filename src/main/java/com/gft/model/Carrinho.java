@@ -1,5 +1,7 @@
 package com.gft.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,25 +9,25 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Carrinho{
+public class Carrinho {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
 	@ManyToOne
 	private Evento evento;
-	
+
 	@ManyToOne
 	private Compra compra;
-	
-	private int quantidade = 1;
-	
+
+	private int quantidade = 0;
+
 	private int ingressoDisp;
-	
-	private double valorUnitario;
-	
-	private double valorTotal;
+
+	private BigDecimal valorUnitario;
+
+	private BigDecimal valorTotal;
 
 	public Long getCodigo() {
 		return codigo;
@@ -58,7 +60,7 @@ public class Carrinho{
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	
+
 	public int getIngressoDisp() {
 		return ingressoDisp;
 	}
@@ -66,20 +68,20 @@ public class Carrinho{
 	public void setIngressoDisp(int ingressoDisp) {
 		this.ingressoDisp = ingressoDisp;
 	}
-	
-	public double getValorTotal() {
+
+	public BigDecimal getValorTotal() {
 		return valorTotal;
 	}
 
-	public void setValorTotal(double valorTotal) {
+	public void setValorTotal(BigDecimal valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-	
-	public double getValorUnitario() {
+
+	public BigDecimal getValorUnitario() {
 		return valorUnitario;
 	}
 
-	public void setValorUnitario(double valorUnitario) {
+	public void setValorUnitario(BigDecimal valorUnitario) {
 		this.valorUnitario = valorUnitario;
 	}
 
@@ -108,7 +110,4 @@ public class Carrinho{
 		return true;
 	}
 
-	
-	
-	
 }

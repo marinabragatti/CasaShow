@@ -13,11 +13,11 @@
 <section layout:fragment="conteudo">
 	<form class="form-horizontal" method="POST" action="/carrinho"
 		th:object="${carrinho}">
-		
 
-		<div class="table-responsive table-casa">
-			<table class="table table-bordered table-striped">
-				<thead th:if="${not #lists.isEmpty(listaEventos)}">
+
+		<div class=" table-carrinho">
+			<table class="table table-bordered table-striped ">
+				<thead th:if="${not #lists.isEmpty(listaCarrinho)}">
 					<tr>
 						<th class="text-center">Nome do Evento</th>
 						<th class="text-center">Ingressos Disponíveis</th>
@@ -34,56 +34,67 @@
 						<td class="text-center" th:text="${carrinho.evento.nomeEvento}"></td>
 						<td class="text-center" th:text="${{carrinho.ingressoDisp}}"></td>
 						<td class="text-center" th:text="${{carrinho.evento.dataEvento}}"></td>
-						<td class="text-center" th:text="|R$ ${{carrinho.evento.valorIngresso}}|"></td>
-						<td class="text-center" th:text="${carrinho.evento.genero.generos}"></td>
-						<td class="text-center" th:text="${carrinho.evento.casaShow.nomeCasa}"></td>
-						<td class="text-center" th:text="${carrinho.quantidade}"></td>
-						
-					</tr>
-					
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<!-- <td class="text-right" th:text="${{carrinho.valorTotal}}">SubTotal $$$$</td> -->
-					</tr>
-					
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>Taxa de Conveniencia $$$$</td>
-					</tr>
-					
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>Total $$$$</td>
+						<td class="text-center"
+							th:text="|R$ ${{carrinho.evento.valorIngresso}}|"></td>
+						<td class="text-center"
+							th:text="${carrinho.evento.genero.generos}"></td>
+						<td class="text-center"
+							th:text="${carrinho.evento.casaShow.nomeCasa}"></td>
+						<td class="text-center"><span
+							th:text="${carrinho.quantidade}"></span> &nbsp; <a
+							th:if="${carrinho.quantidade <= carrinho.ingressoDisp}"
+							th:href="@{/carrinho/altera/{codigo}/{acao}(codigo=${carrinho.evento.codigo}, acao=${1})}"><i
+								class="fas fa-plus-circle"></i></a> <a
+							th:if="!${carrinho.quantidade == 1}"
+							th:href="@{/carrinho/altera/{codigo}/{acao}(codigo=${carrinho.evento.codigo}, acao=${0})}"><i
+								class="fas fa-minus-circle"></i></a></td>
+
+						<td class="text-center"><a class="btn btn-link btn-xs"
+							th:href="@{/carrinho/excluir/{codigo}(codigo=${carrinho.evento.codigo})}"
+							title="Excluir"> <i class="fas fa-trash-alt"></i>
+
+						</a></td>
+
 					</tr>
 
-					
+					<tr th:if="${not #lists.isEmpty(listaCarrinho)}">
+						<td colspan="5" class="text-right">SubTotal</td>
+						<td class="text-right" colspan="3">$$$$$$</td>
+					</tr>
+
+					<tr th:if="${not #lists.isEmpty(listaCarrinho)}">
+						<td colspan="5" class="text-right">Taxa de Conveniência</td>
+						<td class="text-right" colspan="3">$$$$$$</td>
+					</tr>
+
+					<tr th:if="${not #lists.isEmpty(listaCarrinho)}">
+						<td colspan="5" class="text-right">Total</td>
+						<td class="text-right" colspan="3">$$$$$$</td>
+					</tr>
+
+
 				</tbody>
 
 			</table>
 			<div layout:insert="ConfirmacaoExclEvento"></div>
 			<div class="text-center div-semcasa"
 				th:if="${#lists.isEmpty(listaCarrinho)}">Carrinho vazio :(</div>
-		</div>
-		
-		<div class="col-mb-2">
-			<div class="row">
-				<div class="col-sm-12 col-md-6">
-					<button class="btn btn-block btn-light">Continuar Comprando</button>
-				</div>
-				<div class="col-sm-12 col-md-6 text-right">
-					<button class="btn btn-lg btn-block btn-success text-uppercase">comprar</button>
+
+			<div class="col-mb-2" th:if="${not #lists.isEmpty(listaCarrinho)}">
+				<div class="row">
+					<div class="col-sm-12 col-md-6">
+						<a class="btn btn-lg btn-block btn-info text-uppercase"
+							href="/home">Continuar Comprando</a>
+					</div>
+					<div class="col-sm-12 col-md-6 text-right">
+						<button type="submit"
+							class="btn btn-lg btn-block btn-success text-uppercase">Comprar</button>
+					</div>
 				</div>
 			</div>
 		</div>
+
+
 
 	</form>
 </section>
