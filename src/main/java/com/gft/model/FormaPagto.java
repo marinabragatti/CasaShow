@@ -1,24 +1,21 @@
 package com.gft.model;
 
 public enum FormaPagto {
-	
-	CARTAOMASTER("Crédito Master"),
-	CARTAOVISA("Crédito Visa"),
+
+	CARTAOMASTER("Crédito Master"), 
+	CARTAOVISA("Crédito Visa"), 
 	CARTAODEBITO("Débito"),
+	BOLETO("Boleto"),
 	PAYPAL("PayPal");
-	
+
 	private String formaPagto;
 
-	FormaPagto(String string) {
-		// TODO Auto-generated constructor stub
+	FormaPagto(String formaPagto) {
+		this.formaPagto = formaPagto;
 	}
 
 	public String getFormaPagto() {
 		return formaPagto;
-	}
-
-	public void setFormaPagto(String formaPagto) {
-		this.formaPagto = formaPagto;
 	}
 
 }

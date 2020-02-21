@@ -3,10 +3,14 @@ package com.gft.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Carrinho {
@@ -25,9 +29,14 @@ public class Carrinho {
 
 	private int ingressoDisp;
 
-	private BigDecimal valorUnitario;
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal valorUnitario = BigDecimal.valueOf(0);
 
-	private BigDecimal valorTotal;
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal valorTotal = BigDecimal.valueOf(0);;
+
+	@Enumerated(EnumType.STRING)
+	private FormaPagto formaPagto;
 
 	public Long getCodigo() {
 		return codigo;
@@ -83,6 +92,14 @@ public class Carrinho {
 
 	public void setValorUnitario(BigDecimal valorUnitario) {
 		this.valorUnitario = valorUnitario;
+	}
+
+	public FormaPagto getFormaPagto() {
+		return formaPagto;
+	}
+
+	public void setFormaPagto(FormaPagto formaPagto) {
+		this.formaPagto = formaPagto;
 	}
 
 	@Override

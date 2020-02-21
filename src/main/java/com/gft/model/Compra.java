@@ -1,8 +1,11 @@
 package com.gft.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,24 +14,32 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Compra {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
 	@ManyToOne
 	private Usuario usuario;
-	
+
+	private String nomeEvento;
+
+	private int quantidade;
+
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataCompra;
-	
-	private FormaPagto formaPagto;
-	
-	private double valorTotal;
+
+	private String formaPagto;
+
+	private String casa;
+
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal valorTotal = BigDecimal.valueOf(0);;
 
 	public Long getCodigo() {
 		return codigo;
@@ -46,6 +57,22 @@ public class Compra {
 		this.usuario = usuario;
 	}
 
+	public String getNomeEvento() {
+		return nomeEvento;
+	}
+
+	public void setNomeEvento(String nomeEvento) {
+		this.nomeEvento = nomeEvento;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	public Date getDataCompra() {
 		return dataCompra;
 	}
@@ -54,19 +81,27 @@ public class Compra {
 		this.dataCompra = dataCompra;
 	}
 
-	public FormaPagto getFormaPagto() {
+	public String getFormaPagto() {
 		return formaPagto;
 	}
 
-	public void setFormaPagto(FormaPagto formaPagto) {
+	public void setFormaPagto(String formaPagto) {
 		this.formaPagto = formaPagto;
 	}
 
-	public double getValorTotal() {
+	public String getCasa() {
+		return casa;
+	}
+
+	public void setCasa(String casa) {
+		this.casa = casa;
+	}
+
+	public BigDecimal getValorTotal() {
 		return valorTotal;
 	}
 
-	public void setValorTotal(double valorTotal) {
+	public void setValorTotal(BigDecimal valorTotal) {
 		this.valorTotal = valorTotal;
 	}
 
@@ -94,6 +129,5 @@ public class Compra {
 			return false;
 		return true;
 	}
-	
-	
+
 }
