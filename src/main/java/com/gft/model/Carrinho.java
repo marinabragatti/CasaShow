@@ -2,6 +2,7 @@ package com.gft.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,7 +20,7 @@ public class Carrinho {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Evento evento;
 
 	@ManyToOne
@@ -54,13 +55,6 @@ public class Carrinho {
 		this.evento = evento;
 	}
 
-	public Compra getCompra() {
-		return compra;
-	}
-
-	public void setCompra(Compra compra) {
-		this.compra = compra;
-	}
 
 	public int getQuantidade() {
 		return quantidade;
@@ -100,6 +94,14 @@ public class Carrinho {
 
 	public void setFormaPagto(FormaPagto formaPagto) {
 		this.formaPagto = formaPagto;
+	}
+	
+	public Compra getCompra() {
+		return compra;
+	}
+
+	public void setCompra(Compra compra) {
+		this.compra = compra;
 	}
 
 	@Override

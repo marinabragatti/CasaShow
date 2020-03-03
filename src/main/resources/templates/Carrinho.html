@@ -18,7 +18,9 @@
 			<span th:text="${mensagem}"></span>
 		</div>
 
+
 		<div class=" table-carrinho">
+		<input type="hidden" th:field="*{codigo}">
 			<table class="table table-bordered table-striped ">
 				<thead th:if="${not #lists.isEmpty(listaCarrinho)}">
 					<tr>
@@ -34,15 +36,15 @@
 				</thead>
 				<tbody>
 					<tr th:each="carrinho : ${listaCarrinho}">
-						<td class="text-center" th:text="${carrinho.evento.nomeEvento}"></td>
+						<td class="text-center" th:text="${carrinho.evento.nomeEvento}" ></td>
 						<td class="text-center" th:text="${{carrinho.ingressoDisp}}"></td>
-						<td class="text-center" th:text="${{carrinho.evento.dataEvento}}"></td>
+						<td class="text-center" th:text="${{carrinho.evento.dataEvento}}" ></td>
 						<td class="text-center"
 							th:text="|R$ ${{carrinho.evento.valorIngresso}}|"></td>
 						<td class="text-center"
 							th:text="${carrinho.evento.genero.generos}"></td>
 						<td class="text-center"
-							th:text="${carrinho.evento.casaShow.nomeCasa}"></td>
+							th:text="${carrinho.evento.casaShow.nomeCasa}" ></td>
 						<td class="text-center"><span
 							th:text="${carrinho.quantidade}" th:field="*{quantidade}"></span> &nbsp; <a
 							th:if="${carrinho.ingressoDisp > 0}"
@@ -63,7 +65,7 @@
 					<tr th:if="${not #lists.isEmpty(listaCarrinho)}">
 						<td colspan="5" class="text-right">TOTAL</td>
 						<td class="text-right" colspan="3"><span
-							th:text="|R$ ${{compra.valorTotal}}|"></span></td>
+							th:text="|R$ ${{compra.valorTotal}}|" th:field="*{valorTotal}"></span></td>
 					</tr>
 
 
@@ -80,7 +82,7 @@
 				<div class="col-sm-4" th:if="${not #lists.isEmpty(listaCarrinho)}">
 					<select class="form-control" name="formaPagto">
 						<option th:each="formaPagtos : ${formaPagto}"
-							th:value="${formaPagto}" th:text="${formaPagtos.formaPagto}"
+							th:value="${formaPagtos}" th:text="${formaPagtos.formaPagto}"
 							th:field="*{formaPagto}"></option>
 					</select>
 				</div>

@@ -37,13 +37,13 @@
 
 		</div>
 
-		<div class="row" th:each="evento : ${eventos}">
+		<div class="row  home-evento" th:each="evento : ${eventos}">
 
-			<div class="col-lg-4 col-md-6 mb-4 row"
+			<div class="col-lg-4 col-md-6 mb-4"
 				th:if="${!#lists.isEmpty(eventos)}">
 				<div class="card h-100">
-					<a href="#"><img class="card-img-top"
-						src="http://placehold.it/700x400" alt=""></a>
+					<a th:href="@{/carrinho/{codigo}(codigo=${evento.codigo})}"><img class="card-img-top"
+						src="/images/party.jpg" alt=""></a>
 					<div class="card-body">
 						<h4 class="card-title">
 							<a th:href="@{/carrinho/{codigo}(codigo=${evento.codigo})}"
@@ -58,7 +58,7 @@
 					<div class="card-footer">
 						<a class="btn btn-block btn-enviar btn-comprar text-uppercase"
 							th:href="@{/carrinho/{codigo}(codigo=${evento.codigo})}"
-							title="Comprar"> </a>
+							title="Comprar">Comprar</a>
 					</div>
 				</div>
 			</div>

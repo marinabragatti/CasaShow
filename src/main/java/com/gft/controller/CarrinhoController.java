@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -138,9 +140,17 @@ public class CarrinhoController {
 		return "redirect:/carrinho";
 	}
 	
+	private void usuarioLogado() {
+		org.springframework.security.core.Authentication logado = SecurityContextHolder.getContext().getAuthentication();
+		if(!(logado instanceof AnonymousAuthenticationToken)) {
+			String username = logado.getName();
+			usuario = usuarioInter.buscarUsuario(username).get(0);
+		}
+	}
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView salvarCompra(String formaPagtos) {
-		//buscar usuario
+
 		ModelAndView mv = new ModelAndView("Historico");
 		mv.addObject(new Carrinho());
 		mv.addObject("usuario", usuario);

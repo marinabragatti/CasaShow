@@ -22,7 +22,7 @@ public class HistoricoController {
 	@Autowired
 	private UsuarioInter usuarioInter;
 
-	private List<Carrinho> carrinhoCompra = new ArrayList<Carrinho>();
+	private List<Compra> compraFinal= new ArrayList<Compra>();
 	
 	private Compra compra = new Compra();
 	
@@ -32,16 +32,8 @@ public class HistoricoController {
 	public ModelAndView lista() {
 		ModelAndView mv = new ModelAndView("Historico");
 		mv.addObject("compra", compra);
-		mv.addObject("listaCarrinho", carrinhoCompra);
-		mv.addObject(new Carrinho());
+		mv.addObject("listaCompra", compraFinal);
 		return mv;
 	}
 	
-	private void usuarioLogado() {
-		org.springframework.security.core.Authentication logado = SecurityContextHolder.getContext().getAuthentication();
-		if(!(logado instanceof AnonymousAuthenticationToken)) {
-			String username = logado.getName();
-			usuario = usuarioInter.buscarUsuario(username).get(0);
-		}
-	}
 }
